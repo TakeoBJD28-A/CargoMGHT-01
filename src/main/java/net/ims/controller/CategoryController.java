@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bookStore.entity.Book;
+
 
 import net.ims.entity.Category;
 import net.ims.service.CategoryService;
@@ -51,5 +51,17 @@ public class CategoryController {
 	public String deleteCategory(@PathVariable int cid) {
 		cservice.deleteById(cid);
 		return "redirect:/getCategory";
+	}
+	@GetMapping("/getCategoryUser")
+	public ModelAndView getAllCategorylistUser()
+	{
+		List<Category>clist=cservice.getAllCategory();
+		return new ModelAndView("CategoryDisplayUser.html","cat",clist);
+	}
+	@GetMapping("/getCategoryMember")
+	public ModelAndView getAllCategorylistm()
+	{
+		List<Category>clist=cservice.getAllCategory();
+		return new ModelAndView("CategoryDisplayMember.html","cat",clist);
 	}
 }

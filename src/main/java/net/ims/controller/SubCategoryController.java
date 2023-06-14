@@ -51,4 +51,16 @@ public class SubCategoryController {
 		sservice.deleteById(sbid);
 		return "redirect:/getSubCategory";
 	}
+	@GetMapping("/getSubCategoryUser")
+	public ModelAndView getAllSubCategorylistUser()
+	{
+		List<SubCategory>clist=sservice.getAllSubCategory();
+		return new ModelAndView("SubCategoryDisplayUser.html","scat",clist);
+	}
+	@GetMapping("/getSubCategoryMember")
+	public ModelAndView getAllSubCategorylistM()
+	{
+		List<SubCategory>clist=sservice.getAllSubCategory();
+		return new ModelAndView("SubCategoryDisplayMember.html","scat",clist);
+	}
 }

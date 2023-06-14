@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookStore.entity.Book;
+
 
 import net.ims.entity.Category;
 import net.ims.repo.CategoryRepo;

@@ -52,4 +52,16 @@ public class PolicyListController {
 		pservice.deleteById(id);
 		return "redirect:/getPolicyList";
 	}
+	@GetMapping("/getPolicyListUser")
+	public ModelAndView getAllPolicylistUser()
+	{
+		List<PolicyList>clist=pservice.getAllPolicyList();
+		return new ModelAndView("PolicyListDisplayUser.html","pol",clist);
+	}
+	@GetMapping("/getPolicyListMember")
+	public ModelAndView getAllPolicylistM()
+	{
+		List<PolicyList>clist=pservice.getAllPolicyList();
+		return new ModelAndView("PolicyListDisplayMember.html","pol",clist);
+	}
 }

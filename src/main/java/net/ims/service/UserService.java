@@ -13,8 +13,13 @@ public class UserService {
 @Autowired
 private UserRepo uRepo;
 
-public void saveuser(Users u) {
-	uRepo.save(u);
+public int saveuser(Users u) {
+	Users saveEnt=uRepo.save(u);
+	
+	if(saveEnt!=null)
+		return 1;
+	else
+	return 0;
 
 }
 
@@ -23,8 +28,9 @@ public List<Users> getAllUsers()
 	return uRepo.findAll();
 	}
  
-    public Users getUserInfo(String email,String password) {
+    public Users getUserInfo(String email,String password) 
+    {
 
     return uRepo.findByEmailAndPassword(email,password);	
-}
+       }
 }

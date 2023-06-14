@@ -34,6 +34,8 @@ public class Users {
 	private String email;
 	@Column(name="PASSWORD")
 	private String password;
+	@Column (name="ROLE_ID")
+	private int role_id=2;
 	
 	
 }

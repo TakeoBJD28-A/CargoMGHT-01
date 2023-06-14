@@ -18,7 +18,7 @@ import net.ims.service.CategoryService;
 import net.ims.service.UserService;
 
 @Controller
-public class ImsController {
+public class UserController {
 	@Autowired
 	private UserService service;
 	@Autowired
@@ -37,6 +37,30 @@ public class ImsController {
 		
 		return"register.html";
 	}
+	   @PostMapping("/save")
+	  public  String display(@ModelAttribute Users user,Model model)
+		 
+	    {   
+			int count=service.saveuser(user);
+			String msg=" ";
+			      if(count!=0)
+				       msg="Registration Success";
+				    else 
+				      msg="Try Later!";
+			
+			model.addAttribute("msg",msg);
+			return"home";
+					}
+	
+	  /*@PostMapping("/save")
+    public  String display(@ModelAttribute Users user)
+		 
+    {
+		service.saveuser(user);	
+		
+	 
+		return"redirect:/getusers";
+	   }*/
 
 	@GetMapping("/getusers")
 	public ModelAndView allUsers()
@@ -45,35 +69,47 @@ public class ImsController {
 		return new ModelAndView("userdisplay.html","user",list);
 	}
 	
-	@PostMapping("/save")
-    public  String display(@ModelAttribute Users user)
-		 
-    {
-		service.saveuser(user);	 
-	 
-		return"redirect:/getusers";
-	   }
+	
 	
 	@GetMapping("/SigIn")
 	public String login()
 	{
 		
-		return"Login.html";
+		return"Loginnew";
+	}
+	@GetMapping("/LogOut")
+	public String logout()
+	{
+		
+		return"home.html";
 	}
 
 	@PostMapping("/login")
 	public String login(@RequestParam("email") String email,@RequestParam("password")String passwor ,Model model) {
 	 Users user =service.getUserInfo(email, passwor);
-	 if (user != null) {
-	            return "redirect:/DashBoard";
-	        } else {
-	            model.addAttribute("error", "Invalid username or password");
-	            return "login";
-	        }}
+	
+	 if(user!=null) {
+	             if (user.getRole_id() == 1) 
+		      
+	             return "redirect:/Admin";
+	             
+	              else return"redirect:/DashBoard";
 	        
-	        @GetMapping("/DashBoard")
-	    	public String dashbordpage()
-	    	{
+	              } else {
+	               model.addAttribute("error", "Invalid username or password");
+	               return "loginnew";
+	        }}
+    
+	   @GetMapping("/Admin")
+	   public String adminPage()
+	   {
+	    		
+	    		return"homeAdmin.html";
+	    	}
+	   
+	   @GetMapping("/DashBoard")
+	   public String dashbordPage()
+	   {
 	    		
 	    		return"DashBoard.html";
 	    	}
