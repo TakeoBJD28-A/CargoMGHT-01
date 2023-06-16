@@ -7,23 +7,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.ims.entity.Category;
+
 import net.ims.entity.Users;
-import net.ims.service.CategoryService;
+
 import net.ims.service.UserService;
 
 @Controller
 public class UserController {
 	@Autowired
 	private UserService service;
-	@Autowired
-	private CategoryService cservice;
+
 	
+	@RequestMapping("/aboutus")
+	public String companyprofile()
+	{
+		
+		return"AboutUs";
+	}
+
 	@RequestMapping("/")
 	public String register()
 	{
@@ -37,7 +44,22 @@ public class UserController {
 		
 		return"register.html";
 	}
-	   @PostMapping("/save")
+	 @PostMapping("/saveuserbyAdmin")
+	  public  String update(@ModelAttribute Users user,Model model)
+		 
+	    {   
+			int count=service.saveuser(user);
+			String msg=" ";
+			      if(count!=0)
+				       msg="Update Success";
+				    else 
+				      msg="Try Later!";
+			
+			   model.addAttribute("msg",msg);
+			return"redirect:/getusers";
+					}
+	  
+	 @PostMapping("/save")
 	  public  String display(@ModelAttribute Users user,Model model)
 		 
 	    {   
@@ -71,7 +93,7 @@ public class UserController {
 	
 	
 	
-	@GetMapping("/SigIn")
+	@GetMapping("/SignIn")
 	public String login()
 	{
 		
@@ -113,5 +135,16 @@ public class UserController {
 	    		
 	    		return"DashBoard.html";
 	    	}
+	   @RequestMapping("/editUser/{uid}")
+		public String edituser(@PathVariable int uid,Model model) {
+		Users c=service.getUserById(uid);
+			model.addAttribute("pol",c);
+			return "updateUser.html";
+		}
+		@RequestMapping("/deleteUser/{uid}")
+		public String deleteUser(@PathVariable int uid) {
+			service.deleteUser(uid);
+			return "redirect:/getusers";
+		}
 	
 	  }

@@ -20,17 +20,17 @@
         </li>
       
           <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getCategory">Customer List</a>
+            <a class="nav-link"aria-current="page" href="getCategory">Customer</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getSubCategory">Cost Information</a>
+            <a class="nav-link"aria-current="page" href="getSubCategory">cost Information</a>
             </li>
                <li class="nav-item ">
             <a class="nav-link"aria-current="page" href="getPolicyList">Shipping List</a>
             </li>
            </li>
          <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getMy_Policy_List">Tracking Information</a>
+            <a class="nav-link"aria-current="page" href="getMy_Policy_List">Tracking list</a>
             </li>
       </ul>
       </ul>
@@ -43,37 +43,34 @@
       </nav>
   	<div class="container my-5 p-5" style="border:1px solid black;">
 		<h4 class="text-center">Edit Policy Here</h4>
-		<form class="col-md-4 offset-md-4" th:action="@{/savePolicyList}" method="post" th:object="${pol}">
+		<form class="col-md-4 offset-md-4" th:action="@{/saveuserbyAdmin}" method="post" th:object="${pol}">
 			
-			<input type="hidden" name="id" th:value="${pol.id}"/>
+			<input type="hidden" name="uid" th:value="${pol.uid}"/>
 			<div class="mb-3">
-				    <label for="category" class="form-label">Category
-					</label> <input type="text" class="form-control" name="category" th:value="${pol.category}">	
+				    <label for="uname" class="form-label">uname
+					</label> <input type="text" class="form-control" name="uname" th:value="${pol.uname}">	
 			</div>
 			<div class="mb-3">
-				    <label for="subCategory" class="form-label">SubCategory
-					</label> <input type="text" class="form-control" name="subCategory" th:value="${pol.subCategory}">	
+				    <label for="address" class="form-label">Address
+					</label> <input type="text" class="form-control" name="address" th:value="${pol.address}">	
 			</div>
 			<div class="mb-3">
-				    <label for="name" class="form-label">Name
-					</label> <input type="text" class="form-control" name="name" th:value="${pol.name}">	
+				    <label for="name" class="form-label">Phone
+					</label> <input type="text" class="form-control" name="phone" th:value="${pol.phone}">	
 			</div>
 			<div class="mb-3">
-				    <label for="sumAssured" class="form-label">SumAssured
-					</label> <input type="text" class="form-control" name="sumAssured" th:value="${pol.sumAssured}">	
+				    <label for="email" class="form-label">Email
+					</label> <input type="text" class="form-control" name="email" th:value="${pol.email}">	
 			</div>
 			<div class="mb-3">
-				    <label for="premium" class="form-label">Premium
-					</label> <input type="text" class="form-control" name="premium" th:value="${pol.premium}">	
-			</div>
-			
-			<div class="mb-3">
-				     <label for="description" class="form-label">Description
-					</label> <input type="text" class="form-control" name="description" th:value="${pol.description}">	
+				    <label for="premium" class="form-label">Password
+					</label> <input type="text" class="form-control" name="password" th:value="${pol.password}">	
 			</div>
 			
 			
-			<center><button type="submit" class="btn btn-primary">UpDate</button></center>
+			
+			
+			<center><button type="submit" class="btn btn-primary">UpDate User</button></center>
 		</form>
 	</div>
   

@@ -41,6 +41,7 @@ public class CategoryController {
 		List<Category>clist=cservice.getAllCategory();
 		return new ModelAndView("CategoryDisplay.html","cat",clist);
 	}
+	
 	@RequestMapping("/editCategory/{cid}")
 	public String editCat(@PathVariable int cid,Model model) {
 	Category c=cservice.getCategoryById(cid);
