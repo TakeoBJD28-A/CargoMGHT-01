@@ -15,19 +15,20 @@ import lombok.NoArgsConstructor;
 	@AllArgsConstructor
 	@NoArgsConstructor
 	@Entity
-	@Table(name="CATEGORY")
-	public class Category {	
+	@Table(name="SERVICE_COST")
+	public class Service_Cost {
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		@Column (name="CID")
-		private int cid;
-		@Column (name="CNAME")
-		private String cname;
+		@Column (name="SBID")
+		private int sbid;
+		@Column (name="WEIGHT")
+		private String weight;
+		@Column (name="COST")
+		private double cost;
 		@Column (name="DESCRIPTION")
 		private String description;
 		
 		
 
 	}
-
 

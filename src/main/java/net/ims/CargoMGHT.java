@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CargoMGHT {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(CargoMGHT.class, args);
 	}
 

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import net.ims.entity.Users;
-
+import net.ims.exceptionalhandler.RecordNotFoundException;
 import net.ims.service.UserService;
 
 @Controller
@@ -35,7 +35,14 @@ public class UserController {
 	public String register()
 	{
 		
-		return"home.html";
+		return"Index.html";
+	}
+	
+	@RequestMapping("/homeUser")
+	public String homeuser()
+	{
+		
+		return"homeUsers.html";
 	}
 	
 	@GetMapping("/SignOut")
@@ -74,15 +81,7 @@ public class UserController {
 			return"home";
 					}
 	
-	  /*@PostMapping("/save")
-    public  String display(@ModelAttribute Users user)
-		 
-    {
-		service.saveuser(user);	
-		
-	 
-		return"redirect:/getusers";
-	   }*/
+	
 
 	@GetMapping("/getusers")
 	public ModelAndView allUsers()
@@ -99,6 +98,7 @@ public class UserController {
 		
 		return"Loginnew";
 	}
+	
 	@GetMapping("/LogOut")
 	public String logout()
 	{
@@ -106,6 +106,7 @@ public class UserController {
 		return"home.html";
 	}
 
+	
 	@PostMapping("/login")
 	public String login(@RequestParam("email") String email,@RequestParam("password")String passwor ,Model model) {
 	 Users user =service.getUserInfo(email, passwor);
@@ -146,5 +147,24 @@ public class UserController {
 			service.deleteUser(uid);
 			return "redirect:/getusers";
 		}
+		@RequestMapping("/findpsw")
+		public String findBook()
+		{
+			
+			return"passwordSearch";
+		}
+		
+		@GetMapping("/findpassword")
+		public String displayBookById(@RequestParam("email") String email, Model model) {
+		    try {
+		        Users b = service.findByEmail(email);
+		        model.addAttribute("psw", b);
+		        
+		    } catch (RecordNotFoundException e) {
+		        model.addAttribute("error", "Book not found");
+		    }
+		    return "Displaypassword";
+		}
+		}
 	
-	  }
+	  

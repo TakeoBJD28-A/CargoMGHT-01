@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 
 import net.ims.entity.Users;
+import net.ims.exceptionalhandler.RecordNotFoundException;
 
 
 @Repository
@@ -18,7 +19,7 @@ public interface UserRepo extends JpaRepository<Users, Integer> {
 	Users findByEmailAndPassword(String email,String password);
 	//Users findByUname(String uname,String address);
 	
-	//Users findByEmail(String email);
+	Users findByEmail(String email)throws RecordNotFoundException;
 	
 	//Customized Queries
 	

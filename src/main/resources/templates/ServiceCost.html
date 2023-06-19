@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
+
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-    
-    <title>cargo Management System</title>
+    <title>Cargo  Management System</title>
   </head>
   <body>
    
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
  
-    <a class="navbar-brand" href="#">Cargo Management System</a>
+    <a class="navbar-brand" href="#">Cargo  Management System</a>
   
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -20,24 +20,19 @@
         </li>
       
        <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getCategory">Category</a>
+            <a class="nav-link"aria-current="page" href="getusers">Customer List</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getSubCategory">SubCategory</a>
+            <a class="nav-link"aria-current="page" href="#">Service Cost</a>
             </li>
                <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getPolicyList">Policy</a>
+            <a class="nav-link"aria-current="page" href="#">Shipping List</a>
             </li>
-              </li>
-               <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getPolicyList">Policy</a>
-            </li>
-       
-        </li>
+      
       </ul>
 
         <div>
-       <a class="nav-link" href="SignIn">SignIn</a>
+       <a class="nav-link" href="SigIn">Login</a>
       </div>
        <div>
        <a class="nav-link " href="SignOut">SignOut</a>
@@ -45,12 +40,17 @@
      
       </nav>
         <div class ="container">
+           <h2> Cost Information</h2>
   <!-- when u call SignOut then this page load and call /save method to save in DB -->      
-         <form class="col-md-4 offset-md-4" th:action="@{/saveCategory}" method="post" style="background-color: #f1f1f1; padding: 20px;">
+         <form class="col-md-4 offset-md-4" th:action="@{/saveServiceCost}" method="post" style="background-color: #f1f1f1; padding: 20px;">
       
          <div class="form-group">
-        <label for="fname">Category</label>
-        <input type="text" id="cname" name="cname" placeholder="Category Name">
+        <label for="fname">weight</label>
+        <input type="text" id="weight" name="weight" placeholder="weight">
+        </div>
+          <div class="form-group">
+        <label for="fname">Cost($))</label>
+        <input type="text" id="cost" name="cost" placeholder="cost">
         </div>
          <div class="form-group">
         <label for="lname">Description</label>
@@ -58,7 +58,7 @@
         </div>
        
       <div class="form-group">
-        <button type="submit">Add</button>
+        <button type="submit">Add Cost</button>
       </div>
   
     </form>

@@ -5,26 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import net.ims.entity.SubCategory;
+import net.ims.entity.Service_Cost;
+import net.ims.repo.ServiceCostRepo;
 
-import net.ims.repo.SubCategoryRepo;
+
+
 @Repository
-public class SubCategoryService {
+public class Service_CostService {
 	@Autowired
-	private SubCategoryRepo sRepo;
+	private ServiceCostRepo sRepo;
 
-	public void saveSubCategory(SubCategory s) {
+	public void saveService_Cost(Service_Cost s) {
 		sRepo.save(s);
 
 	}
 
-	public List<SubCategory> getAllSubCategory()
+	public List<Service_Cost> getAllService_Cost()
 	{
 		return sRepo.findAll();
 		}
 	
 	
-	public SubCategory getSubCategoryById(int id) {
+	public Service_Cost getService_CostById(int id) {
 		return sRepo.findById(id).get();
 	}
 	

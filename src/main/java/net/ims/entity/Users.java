@@ -29,7 +29,7 @@ public class Users {
 	@Column(name="ADDRESS")
 	private String address;
 	@Column(name="PHONE")
-	private int phone;
+	private long phone;
 	@Column(name="EMAIL")
 	private String email;
 	@Column(name="PASSWORD")

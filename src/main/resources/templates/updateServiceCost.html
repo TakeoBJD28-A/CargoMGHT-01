@@ -20,17 +20,17 @@
         </li>
       
           <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getCategory">Customer List</a>
+            <a class="nav-link"aria-current="page" href="#">Customer List</a>
             </li>
             <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getSubCategory">Cost information</a>
+            <a class="nav-link"aria-current="page" href="getServiceCost">Service Cost</a>
             </li>
                <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getPolicyList">Shipping List</a>
+            <a class="nav-link"aria-current="page" href="#">Shipping List</a>
             </li>
            </li>
          <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getMy_Policy_List">Tracking information</a>
+            <a class="nav-link"aria-current="page" href="#">Tracking information</a>
             </li>
       </ul>
       </ul>
@@ -42,22 +42,25 @@
      
       </nav>
   	<div class="container my-5 p-5" style="border:1px solid black;">
-		<h4 class="text-center">Edit Sub Category Here</h4>
-		<form class="col-md-4 offset-md-4" th:action="@{/saveSubCategory}" method="post" th:object="${scat}">
+		<h4 class="text-center">Edit Cost Here</h4>
+		<form class="col-md-4 offset-md-4" th:action="@{/saveServiceCost}" method="post" th:object="${scat}">
 			
 			<input type="hidden" name="sbid" th:value="${scat.sbid}"/>
 			<div class="mb-3">
-				    <label for="sbname" class="form-label">SubCategory
-					</label> <input type="text" class="form-control" name="sbname" th:value="${scat.sbname}">	
+				    <label for="weight" class="form-label">Weight
+					</label> <input type="text" class="form-control" name="weight" th:value="${scat.weight}">	
 			</div>
-			
+				<div class="mb-3">
+				    <label for="cost" class="form-label">Cost($)
+					</label> <input type="text" class="form-control" name="cost" th:value="${scat.cost}">	
+			</div>
 			<div class="mb-3">
 				     <label for="Description" class="form-label">Description
 					</label> <input type="text" class="form-control" name="Description" th:value="${scat.description}">	
 			</div>
 			
 			
-			<center><button type="submit" class="btn btn-primary">UpDate</button></center>
+			<center><button type="submit" class="btn btn-primary">UpDate Cost</button></center>
 		</form>
 	</div>
   

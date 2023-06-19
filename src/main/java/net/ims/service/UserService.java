@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.ims.entity.Category;
+
+
 import net.ims.entity.Users;
+import net.ims.exceptionalhandler.RecordNotFoundException;
 import net.ims.repo.UserRepo;
 
 @Service
@@ -67,4 +69,20 @@ public List<Users> getAllUsers()
 		        
 		    }return flag;
 	}
+
+	public Users findByEmail(String email)throws RecordNotFoundException{
+		
+		Users user = uRepo.findByEmail(email);
+	    
+	    if (user!=null) 
+	        return user;
+	     else 
+	        throw new RecordNotFoundException("Book Not Found");
+
+		
+	}
+	
+		
+	
+	
 }
