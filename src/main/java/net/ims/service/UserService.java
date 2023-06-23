@@ -52,7 +52,8 @@ public List<Users> getAllUsers()
 	}
 
 	public Users getUserById(int uid) {
-		return uRepo.findById(uid).get();
+
+	return uRepo.findById(uid).get();
 	}
 
 

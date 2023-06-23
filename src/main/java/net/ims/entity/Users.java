@@ -1,16 +1,14 @@
 package net.ims.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -36,6 +34,8 @@ public class Users {
 	private String password;
 	@Column (name="ROLE_ID")
 	private int role_id=2;
-	
-	
+
+
+
+
 }

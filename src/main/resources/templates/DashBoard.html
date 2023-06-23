@@ -20,18 +20,18 @@
         </li>
            
             <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="#">View Service</a>
+            <a class="nav-link"aria-current="page" href="getCargoUser">Cargo</a>
             </li>
-             <li class="nav-item ">
-            <a class="nav-link"aria-current="page" href="getServiceCost">Service Cost</a>
-            </li>
-           
+
+          <li class="nav-item ">
+              <a class="nav-link"aria-current="page" href="shippingForm">Create Cargo</a>
+          </li>
             <li class="nav-item ">
             <a class="nav-link"aria-current="page" href="#">My Order List</a>
             </li>
            
                <li class="nav-item ">
-               <a class="nav-link"aria-current="page" href="#"> Order Tracking Information</a>
+               <a class="nav-link"aria-current="page" href="#"> Tracking Cargo</a>
                </li>
        
                <li class="nav-item ">
@@ -44,7 +44,9 @@
       </div>
       </nav>
          <h2 style="text-align:center; color:Tomato;">WELCOME TO Your DashBoard PAGE</h2>
-
+   <div class="this-wont-center" style="display: flex; justify-content: center; align-items: center;">
+    <h3 class="text-inside-will-center" th:text="${msg}"></h3>
+</div>
    <div class ="container text-center my-5">
    <h6>
    Our Cargo Management System is a comprehensive platform designed to streamline and 

@@ -2,6 +2,10 @@ package net.ims.controller;
 
 import java.util.List;
 
+
+import net.ims.entity.ShippingList;
+
+import net.ims.service.ShippingListServiceDAOImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +26,6 @@ import net.ims.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService service;
-
 	
 	@RequestMapping("/aboutus")
 	public String companyprofile()
@@ -66,8 +69,8 @@ public class UserController {
 			return"redirect:/getusers";
 					}
 	  
-	 @PostMapping("/save")
-	  public  String display(@ModelAttribute Users user,Model model)
+	 @PostMapping("saveUser")
+	  public  String registerUser(@ModelAttribute Users user,Model model)
 		 
 	    {   
 			int count=service.saveuser(user);
@@ -78,16 +81,17 @@ public class UserController {
 				      msg="Try Later!";
 			
 			model.addAttribute("msg",msg);
-			return"home";
+			return"Index.html";
 					}
 	
 	
 
 	@GetMapping("/getusers")
-	public ModelAndView allUsers()
+	public String allUsers(Model model)
 	{
 		List<Users>list=service.getAllUsers();
-		return new ModelAndView("userdisplay.html","user",list);
+		model.addAttribute("user",list);
+		return("userdisplay.html");
 	}
 	
 	
@@ -111,7 +115,7 @@ public class UserController {
 	public String login(@RequestParam("email") String email,@RequestParam("password")String passwor ,Model model) {
 	 Users user =service.getUserInfo(email, passwor);
 	
-	 if(user!=null) {
+	              if(user!=null) {
 	             if (user.getRole_id() == 1) 
 		      
 	             return "redirect:/Admin";
@@ -161,10 +165,12 @@ public class UserController {
 		        model.addAttribute("psw", b);
 		        
 		    } catch (RecordNotFoundException e) {
-		        model.addAttribute("error", "Book not found");
+		        model.addAttribute("error", "User not found");
 		    }
 		    return "Displaypassword";
 		}
-		}
+
+	}
+
 	
 	  
