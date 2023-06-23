@@ -33,6 +33,30 @@ public class UserController {
 		
 		return"AboutUs";
 	}
+	@RequestMapping("/teams")
+	public String companyteams()
+	{
+		
+		return"teams";
+	}
+	@RequestMapping("/why")
+	public String why()
+	{
+		
+		return"why.html";
+	}
+	@RequestMapping("/contact")
+	public String contact()
+	{
+		
+		return"contact.html";
+	}
+	@RequestMapping("/service")
+	public String service()
+	{
+		
+		return"Service.html";
+	}
 
 	@RequestMapping("/")
 	public String register()
